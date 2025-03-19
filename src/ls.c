@@ -246,6 +246,68 @@ int main(int argc, char *argv[]) {
                 exit(EXIT_FAILURE);
                 break;
             case 0:
+                switch(opt_idx) {
+                    case 2:
+                        author = 1;
+                        break;
+                    case 4:
+                        block_size = strtol(optarg, (char **)NULL, 10);
+                        break;
+                    case 6:
+                        color = optarg;
+                        break;
+                    case 10:
+                        file_type = 1;
+                        break;
+                    case 11:
+                        format = optarg;
+                        break;
+                    case 12:
+                        full_time = 1;
+                        break;
+                    case 13:
+                        group_directories_first = 1;
+                        break;
+                    case 16:
+                        si = 1;
+                        break;
+                    case 18:
+                        dereference_command_line_symlink_to_dir = 1;
+                        break;
+                    case 19:
+                        hide = optarg;
+                        break;
+                    case 20:
+                        hyperlink = optarg;
+                        break;
+                    case 21:
+                        indicator_style = optarg;
+                        break;
+                    case 29:
+                        show_control_chars = 1;
+                        break;
+                    case 31:
+                        quoting_style = optarg;
+                        break;
+                    case 35:
+                        sort = optarg;
+                        break;
+                    case 36:
+                        time = optarg;
+                        break;
+                    case 37:
+                        time_style = optarg;
+                        break;
+                    case 41:
+                        zero = 1;
+                        break;
+                    case 42:
+                        help = 1;
+                        break;
+                    case 43:
+                        version = 1;
+                        break;
+                }
                 break;
         }
     }
