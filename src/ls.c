@@ -1,4 +1,6 @@
 #include <getopt.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(int argc, char *argv[]) {
 
@@ -112,9 +114,139 @@ int main(int argc, char *argv[]) {
     
     int opt;
     int opt_idx = 0;
-    while((opt = getopt_long(argc, argv, "aAbBcCdDfF:gGhHiI:klLmnNop:qQrRsStT:uUvw:xXZ1", long_options, &opt_idx))) {
+    opterr = 0;
+    while((opt = getopt_long(argc, argv, "aAbBcCdDfF:gGhHiI:klLmnNop:qQrRsStT:uUvw:xXZ1", long_options, &opt_idx)) != -1) {
         switch (opt) {
-
+            case 'a':
+                all = 1;
+                break;
+            case 'A':
+                almost_all = 1;
+                break;
+            case 'b':
+                escape = 1;
+                break;
+            case 'B':
+                ignore_backups = 1;
+                break;
+            case 'c':
+                c = 1;
+                break;
+            case 'C':
+                C = 1;
+                break;
+            case 'd':
+                directory = 1;
+                break;
+            case 'D':
+                dired = 1;
+                break;
+            case 'f':
+                f = 1;
+                break;
+            case 'F':
+                classify = 1;
+                break;
+            case 'g':
+                g = 1;
+                break;
+            case 'G':
+                no_group = 1;
+                break;
+            case 'h':
+                human_readable = 1;
+                break;
+            case 'H':
+                dereference_command_line = 1;
+                break;
+            case 'i':
+                inode = 1;
+                break;
+            case 'I':
+                ignore = optarg;
+                break;
+            case 'k':
+                kikibytes = 1;
+                break;
+            case 'l':
+                l = 1;
+                break;
+            case 'L':
+                dereference = 1;
+                break;
+            case 'm':
+                m = 1;
+                break;
+            case 'n':
+                numeric_uid_gid = 1;
+                break;
+            case 'N':
+                literal = 1;
+                break;
+            case 'o':
+                o = 1;
+                break;
+            case 'p':
+                indicator_style = "slash";
+                break;
+            case 'q':
+                hide_control_chars = 1;
+                break;
+            case 'Q':
+                quote_name = 1;
+                break;
+            case 'r':
+                reverse = 1;
+                break;
+            case 'R':
+                recursive = 1;
+                break;
+            case 's':
+                size = 1;
+                break;
+            case 'S':
+                S = 1;
+                break;
+            case 't':
+                t = 1;
+                break;
+            case 'T':
+                tab_size = strtol(optarg, (char **)NULL, 10);
+                break;
+            case 'u':
+                u = 1;
+                break;
+            case 'U':
+                U = 1;
+                break;
+            case 'v':
+                v = 1;
+                break;
+            case 'w':
+                width = strtol(optarg, (char **)NULL, 10);
+                break;
+            case 'x':
+                x = 1;
+                break;
+            case 'X':
+                X = 1;
+                break;
+            case 'Z':
+                context = 1;
+                break;
+            case '1':
+                one = 1;
+                break;
+            case ':':
+                printf("Please enter an argument for option %c\n", opt);
+                exit(EXIT_FAILURE);
+                break;
+            case '?':
+                printf("Unknown option -%c\n", optopt);
+                exit(EXIT_FAILURE);
+                break;
+            case 0:
+                break;
         }
     }
 }
